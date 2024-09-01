@@ -1,0 +1,31 @@
+services:
+  nft_bot:
+    image: ivankirpichnikov/nft_bot:latest
+    restart: unless-stopped
+    volumes:
+      - ./nft_bot.toml:/app/nft_bot.toml:ro
+
+  postgresql:
+    image: postgres:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_USER:
+      POSTGRES_PASSWORD:
+      POSTGRES_DB:
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgresql_volume:/var/lib/postgresql/data/pgdata
+
+  redis:
+    image: redis
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_volume:/data
+
+volumes:
+  postgresql_volume:
+  redis_volume:

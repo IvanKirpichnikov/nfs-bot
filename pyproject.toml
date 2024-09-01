@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = 'nft_bot'
+version = '1.0.0'
+description = 'nft bot'
+readme = 'README.rst'
+license = { file = 'LICENSE' }
+requires-python = '~=3.11'
+maintainers = [
+    { name = "Ivan Kirpichnikov", email = "mmssvvvv570@gmail.com" }
+]
+dependencies = [
+    'redis==5.0.6',
+    'psycopg[binary]==3.2.1',
+    'psycopg-pool==3.2.2',
+    'aiogram==3.10.0',
+    'adaptix==3.0.0b7',
+    'dishka==1.3.0',
+    'aiogram-dialog==2.2.0b2'
+]
+
+[project.scripts]
+nft-bot-cli = 'nft_bot.cli:main'
+
+[project.optional-dependencies]
+dev = [
+    'mypy==1.11.1',
+    'ruff==0.6.2',
+]
+uvloop = ['uvloop==0.20.0']
+winloop = ['winloop==0.1.6']
+
+[tool.mypy]
+strict = true
+show_absolute_path = true
+enable_error_code = "explicit-override"
+enable_incomplete_feature = 'NewGenericSyntax'
+
+[[tool.mypy.overrides]]
+module = 'uvloop'
+ignore_missing_imports = true
+

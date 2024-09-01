@@ -1,0 +1,21 @@
+[telegram_bot]
+token = ''
+user_name = ''
+storage_url = ''
+skip_updates = false
+
+[telegram_bot.owner]
+tg_user_id = -1
+tg_chat_id = -1
+url = ''
+
+[database]
+url = ''
+pool_size = -1
+
+[redis]
+url = ''
+
+[localization]
+path = ''
+default_language = ''
